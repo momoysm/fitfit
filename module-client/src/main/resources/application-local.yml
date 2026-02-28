@@ -5,14 +5,14 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${ADMIN_DB_HOST}:${ADMIN_DB_PORT}/${ADMIN_DB_NAME}?useSSL=false&serverTimezone=Asia/Seoul
-    username: ${ADMIN_DB_USERNAME}
-    password: ${ADMIN_DB_PASSWORD}
+    url: jdbc:mysql://${CLIENT_DB_HOST}:${CLIENT_DB_PORT}/${CLIENT_DB_NAME}?useSSL=false&serverTimezone=Asia/Seoul
+    username: ${CLIENT_DB_USERNAME}
+    password: ${CLIENT_DB_PASSWORD}
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show_sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
