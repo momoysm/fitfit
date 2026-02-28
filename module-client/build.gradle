@@ -1,0 +1,21 @@
+plugins {
+    id 'org.springframework.boot' version '3.4.2'
+}
+
+dependencies {
+    implementation project(':domain-member')
+    implementation project(':domain-product')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Database
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+

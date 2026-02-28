@@ -1,5 +1,6 @@
 rootProject.name = 'fitfit'
 include 'module-admin'
+include 'module-client'
 include 'domain-common'
 include 'domain-member'
 include 'domain-product'

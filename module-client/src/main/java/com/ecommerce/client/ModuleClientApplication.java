@@ -1,4 +1,4 @@
-package com.ecommerce.admin;
+package com.ecommerce.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,10 +12,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
     "com.ecommerce.product.entity"
 })
 @SpringBootApplication(scanBasePackages = "com.ecommerce")
-public class ModuleAdminApplication {
+public class ModuleClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ModuleAdminApplication.class, args);
+        SpringApplication.run(ModuleClientApplication.class, args);
     }
 
 }
