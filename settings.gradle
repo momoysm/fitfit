@@ -1,0 +1,4 @@
+rootProject.name = 'fitfit'
+include 'module-admin'
+include 'domain-member'
+include 'domain-common'

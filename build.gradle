@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+/**
+ * root 프로젝트는 실행 대상이 아니므로
+ * jar / bootJar 생성하지 않음
+ */
+tasks.named('jar') {
+    enabled = false
+}
+
+allprojects {
+    group = 'com.ecommerce'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+
+    /**
+     * 공통 플러그인
+     * - java-library: 모듈 간 의존성 명확화
+     * - dependency-management: Spring BOM 관리
+     */
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    /**
+     * Spring Boot 4.0.3 BOM
+     * - spring-boot 플러그인을 쓰지 않아도
+     *   의존성 버전은 전 모듈에서 통일됨
+     */
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:3.4.2"
+        }
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencies {
+        /* Lombok (전 모듈 공통) */
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        /* Test (Mockito, JUnit 포함 – 버전 명시 불필요) */
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
