@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,15 @@ import org.hibernate.annotations.Comment;
 
 @Getter
 @Entity
-@Table(name = "CART")
+@Table(
+    name = "carts",
+    uniqueConstraints = {
+        @UniqueConstraint(
+            name = "uk_member_product_variant",
+            columnNames = {"member_id", "product_id", "variant_id"}
+        )
+    }
+)
 @Comment("장바구니")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cart extends BaseEntity {
@@ -34,9 +43,9 @@ public class Cart extends BaseEntity {
     @Comment("상품 ID")
     private Long productId;
 
-    @Column(name = "product_variant_id")
+    @Column(name = "variant_id")
     @Comment("상품 변형 ID")
-    private Long productVariantId;
+    private Long variantId;
 
     @Column(name = "quantity", nullable = false)
     @Comment("수량")
@@ -50,13 +59,13 @@ public class Cart extends BaseEntity {
     private Cart(
         Long memberId
         , Long productId
-        , Long productVariantId
+        , Long variantId
         , int quantity,
         boolean isSelected
     ) {
         this.memberId = memberId;
         this.productId = productId;
-        this.productVariantId = productVariantId;
+        this.variantId = variantId;
         this.quantity = quantity;
         this.isSelected = isSelected;
     }

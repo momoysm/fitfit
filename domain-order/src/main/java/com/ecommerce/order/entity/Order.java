@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -17,15 +16,7 @@ import org.hibernate.annotations.Comment;
 
 @Getter
 @Entity
-@Table(
-    name = "carts",
-    uniqueConstraints = {
-        @UniqueConstraint(
-            name = "uk_member_product_variant",
-            columnNames = {"member_id", "product_id", "variant_id"}
-        )
-    }
-)
+@Table(name = "orders")
 @Comment("주문")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends BaseEntity {
