@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EntityScan(basePackages = {
     "com.ecommerce.common.entity",
     "com.ecommerce.member.entity",
-    "com.ecommerce.product.entity"
+    "com.ecommerce.product.entity",
+    "com.ecommerce.order.entity"
 })
 @SpringBootApplication(scanBasePackages = "com.ecommerce")
 public class ModuleAdminApplication {
