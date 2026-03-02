@@ -3,6 +3,8 @@ package com.ecommerce.payment.entity;
 import com.ecommerce.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -45,6 +47,7 @@ public class Refund extends BaseEntity {
     @Comment("환불 사유")
     private String reason;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     @Comment("환불 상태")
     private RefundStatus status;

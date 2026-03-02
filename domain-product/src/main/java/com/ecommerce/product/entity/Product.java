@@ -3,6 +3,8 @@ package com.ecommerce.product.entity;
 import com.ecommerce.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,7 +19,7 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "products")
 @Comment("상품")
-@NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product extends BaseEntity {
 
     @Id
@@ -46,6 +48,7 @@ public class Product extends BaseEntity {
     @Comment("상품 재고")
     private Long stock;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     @Comment("상품 상태")
     private ProductStatus status;
