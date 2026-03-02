@@ -17,7 +17,7 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Table(name = "product_option_groups")
 @Comment("상품 옵션 그룹")
-@NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductOptionGroup extends BaseEntity {
 
     @Id

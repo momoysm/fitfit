@@ -11,7 +11,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
     "com.ecommerce.member.entity",
     "com.ecommerce.product.entity",
     "com.ecommerce.order.entity",
-    "com.ecommerce.payment.entity"
+    "com.ecommerce.payment.entity",
+    "com.ecommerce.delivery.entity",
 })
 @SpringBootApplication(scanBasePackages = "com.ecommerce")
 public class ModuleAdminApplication {
