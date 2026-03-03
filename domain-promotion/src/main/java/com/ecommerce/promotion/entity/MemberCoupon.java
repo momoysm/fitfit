@@ -12,6 +12,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 
 @Getter
@@ -39,11 +40,12 @@ public class MemberCoupon extends BaseEntity {
     @Comment("주문 ID")
     private Long orderId;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, length = 20)
     @Comment("쿠폰 상태")
-    private MemberCouponStatus status;
+    private MemberCouponStatus status = MemberCouponStatus.AVAILABLE;
 
     @Column(name = "issued_at", nullable = false)
+    @ColumnDefault("CURRENT_TIMESTAMP")
     @Comment("발급 일시")
     private LocalDateTime issuedAt;
 
@@ -55,11 +57,12 @@ public class MemberCoupon extends BaseEntity {
     private MemberCoupon(
         Long memberId
         , Long couponId
+        , MemberCouponStatus status
         , LocalDateTime issuedAt
     ) {
         this.memberId = memberId;
         this.couponId = couponId;
-        this.status = MemberCouponStatus.AVAILABLE; // 기본값
+        this.status = status; // 기본값
         this.issuedAt = issuedAt;
     }
 }

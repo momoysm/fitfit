@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -18,7 +19,15 @@ import org.hibernate.annotations.Comment;
 
 @Getter
 @Entity
-@Table(name = "deliveries")
+@Table(
+    name = "deliveries",
+    uniqueConstraints = {
+        @UniqueConstraint(
+            name = "uk_courier_tracking_number",
+            columnNames = {"courier", "tracking_number"}
+        )
+    }
+)
 @Comment("배송")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Delivery extends BaseEntity {
@@ -33,21 +42,21 @@ public class Delivery extends BaseEntity {
     @Comment("주문 ID")
     private Long orderId;
 
-    @Column(name = "courier", nullable = false, length = 255)
+    @Column(name = "courier", nullable = false, length = 50)
     @Comment("택배사")
     private String courier;
 
-    @Column(name = "tracking_number", nullable = false, length = 50, unique = true)
+    @Column(name = "tracking_number", nullable = false, length = 100)
     @Comment("운송장번호")
     private String trackingNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, length = 20)
     @Comment("배송상태")
     private DeliveryStatus status;
 
     @Column(name = "shipped_at")
-    @Comment("선박운송일시")
+    @Comment("출고일시")
     private LocalDateTime shippedAt;
 
     @Column(name = "delivered_at")

@@ -12,6 +12,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 
 @Getter
@@ -27,11 +28,11 @@ public class Promotion extends BaseEntity {
     @Comment("프로모션 ID")
     private Long id;
 
-    @Column(name = "promotion_name", nullable = false, length = 255)
+    @Column(name = "promotion_name", nullable = false, length = 100)
     @Comment("프로모션 이름")
     private String name;
 
-    @Column(name = "promotion_type", nullable = false)
+    @Column(name = "promotion_type", nullable = false, length = 20)
     @Comment("프로모션 타입")
     private PromotionType type;
 
@@ -40,7 +41,7 @@ public class Promotion extends BaseEntity {
     private String description;
 
     @Column(name = "discount_value")
-    @Comment("할인 값 (DISCOUNT일 경우)")
+    @Comment("할인값 (DISCOUNT일 경우)")
     private int discountValue;
 
     @Column(name = "started_at", nullable = false)
@@ -52,6 +53,7 @@ public class Promotion extends BaseEntity {
     private LocalDateTime expiredAt;
 
     @Column(name = "is_active", nullable = false)
+    @ColumnDefault("true")
     @Comment("프로모션 활성화 여부")
     private boolean isActive;
 

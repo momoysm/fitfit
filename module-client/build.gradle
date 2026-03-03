@@ -9,6 +9,7 @@ dependencies {
     implementation project(':domain-payment')
     implementation project(':domain-delivery')
     implementation project(':domain-promotion')
+    implementation project(':domain-review')
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'

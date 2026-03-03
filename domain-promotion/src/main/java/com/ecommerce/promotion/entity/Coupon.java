@@ -30,12 +30,12 @@ public class Coupon extends BaseEntity {
     @Comment("쿠폰 ID")
     private Long id;
 
-    @Column(name = "coupon_name", nullable = false, length = 255)
+    @Column(name = "coupon_name", nullable = false, length = 100)
     @Comment("쿠폰 이름")
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false)
+    @Column(name = "type", nullable = false, length = 20)
     @Comment("쿠폰 타입")
     private CouponType type;
 
@@ -44,7 +44,7 @@ public class Coupon extends BaseEntity {
 
     @Column(name = "discount_value", nullable = false)
     @ColumnDefault("0")
-    @Comment("할인 값 (FIXED 또는 FREE_SHIPPING이면 금액, RATE면 %로 취급)")
+    @Comment("할인값 (정액: 원, 정률: %)")
     private int discountValue;
 
     @Column(name = "min_order_price", nullable = false)
