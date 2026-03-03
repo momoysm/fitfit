@@ -34,11 +34,11 @@ public class DeliveryTracking extends BaseEntity {
     private Long deliveryId;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, length = 50)
     @Comment("트래킹 상태")
     private TrackingStatus status;
 
-    @Column(name = "location", nullable = false, length = 100)
+    @Column(name = "location", length = 200)
     @Comment("장소")
     private String location;
 

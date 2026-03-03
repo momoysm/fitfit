@@ -23,6 +23,10 @@ public class OrderProduct extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_product_id")
+    @Comment("주문 상품 ID")
+    private Long id;
+
+    @Column(name = "order_id", nullable = false)
     @Comment("주문 ID")
     private Long orderId;
 
@@ -30,7 +34,7 @@ public class OrderProduct extends BaseEntity {
     @Comment("상품 ID")
     private Long productId;
 
-    @Column(name = "product_name", nullable = false, length = 255)
+    @Column(name = "product_name", nullable = false, length = 200)
     @Comment("상품명")
     private String productName;
 
@@ -49,6 +53,10 @@ public class OrderProduct extends BaseEntity {
     @Column(name = "total_price", nullable = false)
     @Comment("총 가격")
     private int totalPrice;
+
+    @Column(name = "status", nullable = false)
+    @Comment("주문 상품 삳태")
+    private OrderProductStatus status;
 
 
     @Builder(access = AccessLevel.PRIVATE)

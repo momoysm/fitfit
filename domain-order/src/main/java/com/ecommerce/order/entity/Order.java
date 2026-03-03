@@ -46,27 +46,27 @@ public class Order extends BaseEntity {
     private int finalPrice;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, length = 20)
     @Comment("주문 상태")
     private OrderStatus status;
 
-    @Column(name = "receiver_name", nullable = false)
+    @Column(name = "receiver_name", nullable = false, length = 50)
     @Comment("수령인 이름")
     private String receiverName;
 
-    @Column(name = "receiver_phone", nullable = false)
+    @Column(name = "receiver_phone", nullable = false, length = 20)
     @Comment("수령인 전화번호")
     private String receiverPhone;
 
-    @Column(name = "address_name", nullable = false)
+    @Column(name = "address_name", nullable = false, length = 200)
     @Comment("주소")
     private String address;
 
-    @Column(name = "address_detail", nullable = false)
+    @Column(name = "address_detail", length = 100)
     @Comment("상세 주소")
     private String addressDetail;
 
-    @Column(name = "zip_code", nullable = false)
+    @Column(name = "zip_code", nullable = false, length = 10)
     @Comment("우편번호")
     private String zipCode;
 
