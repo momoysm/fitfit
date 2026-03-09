@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @Builder(access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public class ErrorResponseDto<T> {
+public class ErrorResponse<T> {
 
     private final int status;
 
@@ -28,10 +28,10 @@ public class ErrorResponseDto<T> {
 
     // BusinessException 에러
     @Builder
-    public static <T> ErrorResponseDto<T> of(
+    public static <T> ErrorResponse<T> of(
         BusinessException e
     ) {
-        return ErrorResponseDto.<T>builder()
+        return ErrorResponse.<T>builder()
             .status(e.getErrorCode().getHttpStatus())
             .code(e.getErrorCode().getCode())
             .message(e.getErrorCode().getMessage())
@@ -42,8 +42,8 @@ public class ErrorResponseDto<T> {
 
     // 시스템 에러
     @Builder
-    public static <T> ErrorResponseDto<T> of(String message) {
-        return ErrorResponseDto.<T>builder()
+    public static <T> ErrorResponse<T> of(String message) {
+        return ErrorResponse.<T>builder()
             .status(500)
             .code("INTERNAL_SERVER_ERROR")
             .message(message)
