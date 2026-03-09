@@ -3,19 +3,10 @@ package com.ecommerce.admin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaAuditing(auditorAwareRef = "auditorAwareImpl")
-@EntityScan(basePackages = {
-    "com.ecommerce.common.entity",
-    "com.ecommerce.member.entity",
-    "com.ecommerce.product.entity",
-    "com.ecommerce.order.entity",
-    "com.ecommerce.payment.entity",
-    "com.ecommerce.delivery.entity",
-    "com.ecommerce.promotion.entity",
-    "com.ecommerce.review.entity"
-})
+@EntityScan(basePackages = "com.ecommerce")
+@EnableJpaRepositories(basePackages = "com.ecommerce")
 @SpringBootApplication(scanBasePackages = "com.ecommerce")
 public class ModuleAdminApplication {
 

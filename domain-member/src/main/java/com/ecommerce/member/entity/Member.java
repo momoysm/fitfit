@@ -78,6 +78,34 @@ public class Member extends BaseEntity {
         this.status = MemberStatus.ACTIVE; // 최초 생성 시 활성화 상태로 시작
     }
 
+    public static Member of(
+        String email
+        , String password
+        , String name
+        , String phone
+        , MemberType type
+    ) {
+        return Member.builder()
+            .email(email)
+            .password(password)
+            .name(name)
+            .phone(phone)
+            .type(type)
+            .build();
+    }
+
+    public void updateName(String name) {
+        this.name = name;
+    }
+
+    public void updatePhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void updateStatus(MemberStatus status) {
+        this.status = status;
+    }
+
     public void updatePassword(String newPassword) {
         this.password = newPassword;
     }
